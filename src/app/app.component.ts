@@ -6,6 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'basicangular';
   name='jesus';
+  cities=['Mexico', 'San Francisco', 'San Francisco']
+
+  
 }

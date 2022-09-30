@@ -4,6 +4,20 @@
 
 <ul *ngFor="let city of cities">
   <li [ngStyle]="{'color':'red'}">{{city}}</li>
-  <li [ngClass]="{'selected':city==='Mexico'}">{{city}}</li>
+  <li (click)="onCityClicked(city)" [ngClass]="{'selected':city===selection}">{{city}}</li>
 
 </ul>
+
+<div *ngIf="selection">
+  <p *ngIf="selection">Your city is:{{selection}}</p>
+  <!--
+    <button (click)="onClear()" *ngIf="selection">clear your city</button>
+  -->
+  <app-button (click)="onClear()" [color]="'blue'" [label]="'clear your city'" ></app-button>
+    <!--
+  <app-button (click)="onClear()" [color]="'blue'" [label]="'hola'"></app-button>
+  <app-button (click)="onClear()" [color]="'blue'" [label]="'dasdasd'"></app-button>
+    -->
+
+</div>
+

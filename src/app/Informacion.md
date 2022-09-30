@@ -27,7 +27,6 @@ tipos de directivas: estructurales, de atributos, directivas customs, componente
 
 ```
 
-
 ### Directivas de atributos:
 
 ngClass: se puede definir ciertas propiedades de estilos que podran ser tomadas que esten declaradas en el scss, estos estilos pueden ir condicionados.
@@ -48,7 +47,6 @@ ngClass: se puede definir ciertas propiedades de estilos que podran ser tomadas 
 
 ```
 
-
 ngStyle: se puede definir ciertas propiedades de estilos que podran ser tomadas que esten declaradas en el mismo archivo html, estos estilos pueden ir condicionados.
 
 ```html
@@ -57,3 +55,33 @@ ngStyle: se puede definir ciertas propiedades de estilos que podran ser tomadas 
   <li [ngStyle]="{'color':'red'}">{{city}}</li>
 </ul>
 ```
+
+## Ciclos de vida de componentes:
+
+| Evento                       | Definicion.                                                                                                                                                                                                                                                                                                         |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ngOnChanges()`            | Este*hook* se llama al inicio y cada vez que Angular detecta un cambio en los inputs del componente (cuando tienes algún  *property binding* ). Recibe como parámetro un objeto [`SimpleChanges`](https://angular.io/api/core/SimpleChanges), con los valores actuales y anteriores (si había) de los inputs. |
+| `ngOnInit()`               | Este*hook* te permite inicializar el componente una vez ha recibido las propiedades de entrada.                                                                                                                                                                                                                   |
+| `ngDoCheck()`              | Sirve para detectar y actuar sobre cambios que Angular no va a detectar por si mismo. Se llama también durante cada ciclo de detección de cambios, después de `ngOnChanges()`.                                                                                                                                 |
+| `ngAfterContentInit()`:    | Se ejecuta una sola vez, justo después de que Angular proyecte contenido externo en la vista del componente (con `ng-content`).                                                                                                                                                                                  |
+| `ngAfterContentChecked()`: | Se ejecuta después de que Angular compruebe el contenido proyectado en el componente. Se ejecuta también durante los ciclos de detección de cambios, después de `ngDoCheck()`.                                                                                                                                |
+| `ngAfterViewInit()`:       | Se llama una única vez, tras inicializar las vistas y sub-vistas del componente.                                                                                                                                                                                                                                   |
+| `ngAfterViewChecked()`     | Se llama después de comprobar los cambios de las vistas y sub-vistas del componente. Se ejecuta también durante el ciclo de detección de cambios, después de `ngAfterContentChecked()`.                                                                                                                       |
+| `ngOnDestroy()`            | Se llama solo una vez, justo antes de que Angular destruya el componente, y sirve para prevenir memory leaks, eliminando por ejemplo suscripciones a*Observables* e  *event handlers* .                                                                                                                         |
+
+## EventBinding
+
+Enlace de eventos: permite escuchar y responder a las acciones de usuarios(pulsaciones de teclas, movimientos de mouse, clicks))
+
+```html
+<button (click)="onSave()"></button>
+
+```
+
+## Decorador Input
+
+Decorador :es un tipo especial de declaracion que se puede adjuntar a una clase, una propiedad.
+
+@Input: modifica el comportamiento atraves de una propiedad que podamos pasar., puede recibir su valor de su componente padre.
+
+padre=>hijo

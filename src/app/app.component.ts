@@ -13,15 +13,23 @@ export class AppComponent{
   selection !:string;
 
 
-  onClear():void{
 
-    this.selection='';
+  addNewCity(city:string):void{
+
+    this.cities.push(city);
+    
   }
 
   onCityClicked(city: string):void {
 
     console.log(city);
     this.selection = city;
+  }
+
+
+  onClear():void{
+
+    this.selection='';
   }
 
 }

@@ -80,8 +80,17 @@ Enlace de eventos: permite escuchar y responder a las acciones de usuarios(pulsa
 
 ## Decorador Input
 
-Decorador :es un tipo especial de declaracion que se puede adjuntar a una clase, una propiedad.
+Decorador :es un tipo especial de declaracion que se puede adjuntar a una clase, una propiedad, un parametro, le pasamos una configuracion y entonces modificamos .
 
 @Input: modifica el comportamiento atraves de una propiedad que podamos pasar., puede recibir su valor de su componente padre.
 
 padre=>hijo
+
+
+## Decorador OutPut
+
+@Output
+
+@OutPut: modifica el comportamiento atraves de una propiedad que podamos pasar., puede recibir datos o cambios de componente hijo al componente padre.
+
+hijo=>´padre

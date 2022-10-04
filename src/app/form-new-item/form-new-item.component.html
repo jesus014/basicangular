@@ -7,8 +7,10 @@
       <input type="text" id="newItem" class="form-control" #newItem>
     </div>
     <div class="col-auto">
-      
+
       <button (click)="onAddNewItem(newItem.value)" type="button" class="btn "[ngClass]="[className]" >Add {{label}}</button>
     </div>
   </div>
 </form>
+
+<p >Count {{counterRender()}}</p>

@@ -1,9 +1,11 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.css']
+  styleUrls: ['./button.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class ButtonComponent implements OnChanges ,OnInit, OnDestroy {
 
@@ -28,4 +30,8 @@ export class ButtonComponent implements OnChanges ,OnInit, OnDestroy {
   //termino de vida de un componente
 
 
+  counterRender():boolean {
+    console.log('render button')
+    return true;
+  }
 }

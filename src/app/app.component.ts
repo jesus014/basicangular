@@ -11,13 +11,15 @@ export class AppComponent{
   name='jesus';
   cities=['Mexico', 'San Francisco', 'San Francisco']
   selection !:string;
+  //valor que toma el ngmodel
+  criteria='';
 
 
 
   addNewCity(city:string):void{
 
     this.cities.push(city);
-    
+
   }
 
   onCityClicked(city: string):void {

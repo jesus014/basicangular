@@ -86,7 +86,6 @@ Decorador :es un tipo especial de declaracion que se puede adjuntar a una clase,
 
 padre=>hijo
 
-
 ## Decorador OutPut
 
 @Output
@@ -94,3 +93,94 @@ padre=>hijo
 @OutPut: modifica el comportamiento atraves de una propiedad que podamos pasar., puede recibir datos o cambios de componente hijo al componente padre.
 
 hijo=>´padre
+
+## change detection
+
+Es el mecanismo o estrategia de deteccion de cambios que utiliza angular para saber cuando debe de actualizar un componente o toda la vista en caso de que la data haya cambiado
+
+### ¿que produce estos cambios?
+
+eventos del mouse, llamadas http, llamadas ajax
+
+### ¿que es change detection?
+
+OnPush: establece la estrategia bajo demanda
+
+Se puede delimitar cuando se haga un renderizado con las propiedades de changeDetection.
+
+```typescript
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+
+@Component({
+  selector: 'app-cities',
+  template: `
+        <ul >
+               <!-- <li [ngStyle]="{'color':'red'}">{{city}}</li>-->
+        <li (click)="onCityClicked(city)" [ngClass]="{'alert alert-info':city===selection}">{{city}}</li>
+      </ul>
+  <p>{{counterRender}}</p>
+  `,
+  styleUrls: ['./cities.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class CitiesComponent  {
+
+  @Input() city!:string;
+  @Input() selection!:string;
+  @Output() cityClicked = new EventEmitter<string>();
+
+  onCityClicked(city:string): void {
+
+    this.cityClicked.emit(city);
+
+  }
+
+  counterRender():boolean {
+    console.log('render cities')
+    return true;
+  }
+}
+
+```
+
+
+## ¿Que es un pipe?
+
+El contenido principal de los pipes es tranformar la data, los pipes reciben un dato y pureden transformar esa data.
+
+creacion de pipes: ng g pipe 
+
+```typescript
+//pipe basico que realiza un filtrado
+import { Pipe, PipeTransform } from "@angular/core";
+
+@Pipe({
+  name:'filter',
+})
+
+export class FilterPipe implements PipeTransform {
+
+  // en este metodo se reciben los valores en este caso un arreglo de strings,
+  // y recibe un parametro llamado arg que va a ser evaluado
+  //retorna un arreglo de strings
+  transform(values: string[], arg: string ) : string[] {
+
+    let result:string[] = [];
+
+    if(!arg || arg?.length<3 ) return values;
+
+    for(const value of values){
+
+      if(value.toLowerCase().indexOf(arg.toLowerCase())> -1){
+        result = [...result,value]
+      }
+
+    }
+
+    return result;
+
+  }
+
+}
+
+```

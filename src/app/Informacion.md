@@ -233,3 +233,60 @@ se consulto la pagina de angular para obtener informacion al respecto  de los fo
 <pre>{{contactForm.value|json}}</pre>
 
 ```
+
+
+### formularios reactivos.
+
+Todo parte de AbastractControl. 
+
+posteriormente se puede utilizar el FormControl o FormArray
+
+Reactive forms Directives
+
+formGroup Form COntrol FormControlName
+
+
+```html
+<h1>Contact form</h1>
+
+<!--Uso de formularios basicos-->
+<form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+  <div class="m-4">
+    <label for="name" class="form-label">Name</label>
+    <!-- se crea la referencia deacuerdo al [formGroup]="contactForm"  -->
+    <input type="text" class="form-control" id="name" name="name"  formControlName="name">
+    <!-- deacuerdo a la propiedad formControlName="name" y todas las demas propiedades -->
+    <div *ngIf= "contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['required']" class="alert alert-danger">This field is required</div>
+    <div *ngIf= "contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['minlength']" class="alert alert-danger">
+      Names must be longer than {{contactForm.get('name')?.errors?.['minlength'].requiredLength}} characters</div>
+  </div>
+
+  <div class="m-4 form-check">
+    <label for="checkAdult" class="form-label">Are you over 18 year of age?</label>
+    <input type="checkbox" class="form-check-input" id="checkAdult" name="checkAdult" formControlName="checkAdult">
+    <div *ngIf= "contactForm.get('checkAdult')?.touched && contactForm.get('checkAdult')?.errors?.['required']" class="alert alert-danger">This field is required</div>
+  </div>
+  <div class="m-4">
+    <label for="departament" class="form-label">Departament</label>
+    <select name="departament" id="departament" class="form-select form-select-sm" formControlName="departament" >
+      <option selected> Open this select menu</option>
+      <option value="marketing"> Marketing</option>
+      <option value="sales"> Sales</option>
+      <option value="other"> Other</option>
+    </select>
+  </div>
+
+  <div class="m-4">
+    <label for="comment" class="form-label">Comment</label>
+    <textarea type="comment" class="form-control" id="comment"  rows="4" placeholder="leave a comment" name="comment"  required formControlName="comment"></textarea>
+    <div *ngIf= "contactForm.get('comment')?.touched && contactForm.get('comment')?.errors?.['required']" class="alert alert-danger">This field is required</div>
+  </div>
+
+  <div class="d float-end">
+    <button class="btn btn-info btn-lg" [disabled]="contactForm.invalid">Send</button>
+  </div>
+</form>
+
+<pre>{{contactForm.value|json}}</pre>
+
+```

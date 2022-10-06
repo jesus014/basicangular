@@ -8,6 +8,7 @@ import { ButtonComponent } from './button/button.component';
 import { FormNewItemComponent } from './form-new-item/form-new-item.component';
 import { CitiesComponent } from './cities/cities.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     ButtonComponent,
     FormNewItemComponent,
     CitiesComponent,
-    FilterPipe
+    FilterPipe,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

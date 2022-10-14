@@ -234,17 +234,15 @@ se consulto la pagina de angular para obtener informacion al respecto  de los fo
 
 ```
 
-
 ### formularios reactivos.
 
-Todo parte de AbastractControl. 
+Todo parte de AbastractControl.
 
 posteriormente se puede utilizar el FormControl o FormArray
 
 Reactive forms Directives
 
 formGroup Form COntrol FormControlName
-
 
 ```html
 <h1>Contact form</h1>
@@ -289,4 +287,38 @@ formGroup Form COntrol FormControlName
 
 <pre>{{contactForm.value|json}}</pre>
 
+```
+
+## Directivas Angular
+
+Encargadas de la navegacion de un componente a otro
+
+pasar paremetros
+
+redireccionar
+
+### proteger rutas(guards)
+
+**canDeactivate**: se utiliza para confirmar la salida de una pagina
+
+**canActivate**: se  utiliza para proteger las rutas evaluando algo
+
+Ejemplo de diferentes tipos de rutaas
+
+```typescript
+const routes: Routes = [
+  {path:'', redirectTo:'/home',pathMatch:'full'},
+  {path:'contact-reactive', component:ContactReactiveComponent, canDeactivate:[WithoutSaveGuard]},
+  {path:'contact-templeate/:id', component:ContactComponent},
+  {path:'home', component:HomeComponent},
+  //uso de rutas hijas
+  {path:'users', component:UserComponent,canActivate:[PermissionsGuard],
+   children:[
+    {path:'list',component:ListComponent},
+    {path:'details',component:DetailsComponent},
+  ]
+  },
+  {path:'**', component:PagenotfoundComponent}
+
+];
 ```

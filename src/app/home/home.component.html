@@ -1,0 +1,55 @@
+<!--refactorizacion de codigo para que sea utilizado el routeroutlet-->
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-6 my-3">
+      <app-form-new-item (newItemEvent)="addNewCity($event)" [label]="'city'" [className]="'btn-info'"></app-form-new-item>
+    </div>
+
+    <div class="col-md-6 my-3">
+      <input type="text" class="form-control" placeholder="filter" [(ngModel)]="criteria">
+    </div>
+
+    <div class="col-md-8">
+      <!--
+      <p *ngIf="name">el nombres es :{{name}}</p>
+      <input type="text" [(ngModel)]="name">
+        -->
+        <ul>
+          <!--  se  utiliza un pipe personalizado pasandole el sting de criteria que se utiliza en el ngModel-->
+
+          <!--Se utiliza los metodos output pasandole el metodo cityClicked
+             se utiliza los metodos input para selection y city que en este caso son strings
+           -->
+          <app-cities *ngFor="let city of (cities| filter:criteria)" (cityClicked)="onCityClicked($event)"
+              [city]="city" [selection]="selection"></app-cities>
+        </ul>
+        <!--
+        <ul *ngFor="let city of cities">
+          <li (click)="onCityClicked(city)" [ngClass]="{'alert alert-info':city===selection}">{{city}}</li>
+        </ul>
+        -->
+
+
+      <div *ngIf="selection">
+        <p *ngIf="selection">Your city is:{{selection}}</p>
+        <!--
+          <button (click)="onClear()" *ngIf="selection">clear your city</button>
+        -->
+        <app-button (click)="onClear()" [color]="'blue'" [label]="'clear your city'" ></app-button>
+          <!--
+        <app-button (click)="onClear()" [color]="'blue'" [label]="'hola'"></app-button>
+        <app-button (click)="onClear()" [color]="'blue'" [label]="'dasdasd'"></app-button>
+          -->
+
+      </div>
+    </div>
+  </div>
+  <div>
+    <!--Uso de diferentes pipes -->
+    <p>{{'6/15/12, 9:03 AM' | date}}</p>
+    <p>My birthday is {{'6/15/12, 9:03 AM' | date:'short' | uppercase}}</p>
+    <p>{{'12312'|currency:'EUR'}}</p>
+    <p>{{'12312'|currency:'DOP'}}</p>
+  </div>
+</div>

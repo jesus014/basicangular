@@ -323,7 +323,6 @@ const routes: Routes = [
 ];
 ```
 
-
 ## Resolve
 
 **Es el mecanismo que se encarga para que hasta que tengamos data se inicialice.**
@@ -337,3 +336,11 @@ se debe implementar un metodo resolve() que se invoca cuando comienza la navegac
 el router espera a que se resuelvan los datos antes de que finalmente se active la ruta
 
 Es el mecanismo que se encarga para que hasta que tengamos data se inicialice.
+
+
+
+## Carga diferida.
+
+retrazar la carga de un determinado modulo, hasta que sea necesario
+
+ng g m contact-reactive --routing true

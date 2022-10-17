@@ -13,9 +13,10 @@ import { DataResolverService } from './resolvers/data.resolver.service';
 
 const routes: Routes = [
   {path:'', redirectTo:'/home',pathMatch:'full'},
-  {path:'contact-reactive', component:ContactReactiveComponent,
-                            canDeactivate:[WithoutSaveGuard],
-                            resolve:{departaments:DataResolverService}},
+  //{path:'contact-reactive', component:ContactReactiveComponent,
+  //                          canDeactivate:[WithoutSaveGuard],
+  //                          resolve:{departaments:DataResolverService}},
+  {path:'contact-reactive', loadChildren:()=>import('./contact-reactive/contact-reactive.module').then(m=>m.ContactReactiveModule)},
   {path:'contact-templeate/:id', component:ContactComponent},
   {path:'home', component:HomeComponent},
   //uso de rutas hijas en el path de users

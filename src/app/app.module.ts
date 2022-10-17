@@ -25,7 +25,7 @@ import { ListComponent } from './users/list/list.component';
     CitiesComponent,
     FilterPipe,
     ContactComponent,
-    ContactReactiveComponent,
+    
     HomeComponent,
     NavbarComponent,
     PagenotfoundComponent,

@@ -11,6 +11,7 @@ export class ContactReactiveComponent implements OnInit {
 
   contactForm!: FormGroup;
   name!: string;
+  departaments:string[]=[]
 
   constructor(private readonly fb:FormBuilder,
               private readonly route:ActivatedRoute) {
@@ -26,6 +27,7 @@ export class ContactReactiveComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.departaments= this.route.snapshot.data['departaments'];
     //se iguala deacuerdo al metodo
     this.contactForm = this.initForm();
     this.onPatchValue();

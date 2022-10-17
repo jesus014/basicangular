@@ -9,10 +9,13 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { DetailsComponent } from './users/details/details.component';
 import { ListComponent } from './users/list/list.component';
 import { UserComponent } from './users/user/user.component';
+import { DataResolverService } from './resolvers/data.resolver.service';
 
 const routes: Routes = [
   {path:'', redirectTo:'/home',pathMatch:'full'},
-  {path:'contact-reactive', component:ContactReactiveComponent, canDeactivate:[WithoutSaveGuard]},
+  {path:'contact-reactive', component:ContactReactiveComponent,
+                            canDeactivate:[WithoutSaveGuard],
+                            resolve:{departaments:DataResolverService}},
   {path:'contact-templeate/:id', component:ContactComponent},
   {path:'home', component:HomeComponent},
   //uso de rutas hijas en el path de users

@@ -322,3 +322,18 @@ const routes: Routes = [
 
 ];
 ```
+
+
+## Resolve
+
+**Es el mecanismo que se encarga para que hasta que tengamos data se inicialice.**
+
+interfaace que las clases pueden implementar para saer un proveedor de datos.
+
+se debe usar con el router para resolver datos durante la navegacion.
+
+se debe implementar un metodo resolve() que se invoca cuando comienza la navegacion
+
+el router espera a que se resuelvan los datos antes de que finalmente se active la ruta
+
+Es el mecanismo que se encarga para que hasta que tengamos data se inicialice.

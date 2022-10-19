@@ -344,3 +344,7 @@ Es el mecanismo que se encarga para que hasta que tengamos data se inicialice.
 retrazar la carga de un determinado modulo, hasta que sea necesario
 
 ng g m contact-reactive --routing true
+
+forRoot => se carga de manera inmedita todo el bondel
+
+forchild => se carga cuando se pide (carga diferida), se carga bajo demanda, modulo hijo.

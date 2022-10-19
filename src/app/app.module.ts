@@ -17,6 +17,8 @@ import { UserComponent } from './users/user/user.component';
 import { DetailsComponent } from './users/details/details.component';
 import { ListComponent } from './users/list/list.component';
 
+import{HttpClientModule} from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,7 @@ import { ListComponent } from './users/list/list.component';
     CitiesComponent,
     FilterPipe,
     ContactComponent,
-    
+
     HomeComponent,
     NavbarComponent,
     PagenotfoundComponent,
@@ -38,6 +40,7 @@ import { ListComponent } from './users/list/list.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

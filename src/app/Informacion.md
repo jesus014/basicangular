@@ -339,7 +339,7 @@ Es el mecanismo que se encarga para que hasta que tengamos data se inicialice.
 
 ## Carga diferida.
 
-retrazar la carga de un determinado modulo, hasta que sea necesario, carga perezosa 
+retrazar la carga de un determinado modulo, hasta que sea necesario, carga perezosa
 
 ng g m contact-reactive --routing true
 
@@ -373,7 +373,6 @@ subject tiene el mismo comportamiento que un observable que puede compartir data
 
 * subject
 * behavior subject
-
 * replay subject
 * async subject
 
@@ -405,7 +404,6 @@ multi-slot
 
 ```
 
-
 ## ng container y ng templete
 
 ### **ng container**
@@ -420,6 +418,7 @@ multi-slot
 ```
 
 ### ****ng templete**
+
 **
 
 **ng templete** nosotros le decimos cuando se renderice la plantilla:
@@ -442,3 +441,22 @@ multi-slot
 
 
 ```
+
+
+## ViewChild Decorator 
+
+Esparecidos a getid de javascript   =>  Es un decorador de propiedades que configura una consulta de vista
+
+El detector busca el rpimer elemento o directiva que coincida con el selector de la vista del dom
+
+si el dom cambia y un elemento secundario nuevo coincide con el actual la propiedad se actualiza
+
+algunos selectores posibles pueden ser ;
+
+clasess o directivas
+
+templete reference (input, ngmodel))
+
+templateRef
+
+ngModel

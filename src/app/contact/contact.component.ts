@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 
@@ -16,6 +16,8 @@ interface ContactForm{
 })
 export class ContactComponent implements OnInit {
 
+  //usamos ViewChild Decorator utilizando bajo referencia que tenemos en el formulario de tipo NgForm
+  @ViewChild('contactForm') contactForm!:NgForm;
   //creacion de modelo para hacer uso en el html para hacer binding con las propiedades
   //
   id!: string;
@@ -37,7 +39,7 @@ export class ContactComponent implements OnInit {
   }
 
   //creacion del metodo que se hace llamar en el formulario recibiendo informacion
-  onSubmit(formValues:NgForm): void {
-    console.log('Form values',formValues)
+  onSubmit(): void {
+    console.log('Form values',this.contactForm)
   }
 }

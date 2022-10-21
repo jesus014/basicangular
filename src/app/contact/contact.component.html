@@ -1,7 +1,7 @@
 <h1>Contact form {{id}}</h1>
 
 <!--Uso de formularios basicos-->
-<form (ngSubmit)="onSubmit(contactForm.value)" #contactForm="ngForm">
+<form (ngSubmit)="onSubmit()" #contactForm="ngForm">
   <div class="m-4">
     <label for="name" class="form-label">Name</label>
     <!-- se crea la referencia con  el modelo, se asigna un nombre para poder hacer la comparacion y pueda salir el alert-->

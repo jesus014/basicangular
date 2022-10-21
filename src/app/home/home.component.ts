@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { NgModel } from '@angular/forms';
 import { City, DataService } from '../services/data.service';
 
 @Component({
@@ -6,8 +7,9 @@ import { City, DataService } from '../services/data.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
+  @ViewChild(NgModel) filterInput !:NgModel;
   title = 'basicangular';
   //name='jesus';
   cities:City[] = [];
@@ -27,6 +29,11 @@ export class HomeComponent implements OnInit {
     this.dataService.getCities().subscribe(cities => {
       this.cities = [...cities];
     })
+  }
+  ngAfterViewInit(): void {
+    this.filterInput.valueChanges?.subscribe(response=>
+      console.log(response)
+      );
   }
 
   updateCity(city: City):void {

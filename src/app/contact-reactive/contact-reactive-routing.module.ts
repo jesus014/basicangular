@@ -7,6 +7,7 @@ import { ContactReactiveComponent } from './contact-reactive.component';
 const routes: Routes = [
   {path:'', component:ContactReactiveComponent,
   canDeactivate:[WithoutSaveGuard],
+  //uso de resolve
   resolve:{departaments:DataResolverService}},
 ];
 

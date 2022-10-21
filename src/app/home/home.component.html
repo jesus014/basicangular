@@ -23,11 +23,13 @@
           <!--Se utiliza los metodos output pasandole el metodo cityClicked
              se utiliza los metodos input para selection y city que en este caso son strings
            -->
-          <app-cities *ngFor="let city of (cities| filter:criteria)"
-          
-              (cityDeleteEvent)="onCityDelete($event)"
-              (citySelectedEvent)="onCitySelected($event)"
-              [city]="city" [selection]="selection"></app-cities>
+           <ng-container *ngIf="cities.length > 1; else templateEmpty">
+             <app-cities *ngFor="let city of (cities| filter:criteria)"
+
+                 (cityDeleteEvent)="onCityDelete($event)"
+                 (citySelectedEvent)="onCitySelected($event)"
+                 [city]="city" [selection]="selection"></app-cities>
+           </ng-container>
 
         <!--
         <ul *ngFor="let city of cities">
@@ -36,20 +38,40 @@
         -->
 
 
-      <div *ngIf="selection">
-        <p *ngIf="selection?.name">Your city is:{{selection?.name}}</p>
-        <!--
-          <button (click)="onClear()" *ngIf="selection">clear your city</button>
-        -->
-        <app-button (click)="onClear()" [color]="'blue'" [label]="'clear your city'" ></app-button>
+      <div class="col-md-4">
+        <ng-container *ngIf="selection">
+          <p *ngIf="selection?.name">Your city is:{{selection?.name}}</p>
           <!--
-        <app-button (click)="onClear()" [color]="'blue'" [label]="'hola'"></app-button>
-        <app-button (click)="onClear()" [color]="'blue'" [label]="'dasdasd'"></app-button>
+            <button (click)="onClear()" *ngIf="selection">clear your city</button>
+          -->
+          <app-button (click)="onClear()" [color]="'blue'" [label]="'clear your city'" ></app-button>
+          <!--
+            <app-button (click)="onClear()" [color]="'blue'" [label]="'hola'"></app-button>
+            <app-button (click)="onClear()" [color]="'blue'" [label]="'dasdasd'"></app-button>
           -->
 
+        </ng-container>
       </div>
     </div>
   </div>
+  <hr>
+  <h2> Uso de content project </h2>
+  <!--creacion de tarjeta dinamica -->
+  <app-card *ngFor="let city of (cities| filter:criteria)">
+    <div card-header>{{city.name}}</div>
+    <div card-body>soy body</div>
+  </app-card>
+  <!--creacion de tarjeta basica-->
+
+  <app-card>
+    <div card-header>soy header2</div>
+    <div card-body>soy body2</div>
+  </app-card>
+
+  <hr>
+
+  <h2> Uso de pipes</h2>
+
   <div>
     <!--Uso de diferentes pipes -->
     <p>{{'6/15/12, 9:03 AM' | date}}</p>
@@ -58,3 +80,7 @@
     <p>{{'12312'|currency:'DOP'}}</p>
   </div>
 </div>
+
+<!--Creacion de ng templeate que sera llamado en la parte de arriba si el ng se confirma-->
+<ng-template #templateEmpty> We no cities XD</ng-template>
+

@@ -1,0 +1,12 @@
+<!--Creacion de componente para utilizarlo deacuerdo al content project
+se pasan los valores deacuerdo al select y se asignan a la tarjeta
+-->
+<div class="card">
+  <div class="card-header">
+    <ng-content select="[card-header]" ></ng-content>
+  </div>
+  <div class="card-body">
+    <ng-content select="[card-body]"></ng-content>
+
+  </div>
+</div>

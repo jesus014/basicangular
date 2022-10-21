@@ -9,7 +9,7 @@
     <div class="col-auto">
       <!--se utilizan los metodos creados pasando lso valores, ya sea aceptar o editar -->
       <button *ngIf="!selection?.name" (click)="onAddNewItem(newItem.value); newItem.value=''" type="button" class="btn "[ngClass]="[className]" >Add {{label}}</button>
-      <button *ngIf="selection.name" (click)="onUpdateItem(selection, newItem.value); newItem.value=''" type="button" class="btn "[ngClass]="[className]" >Update {{label}}</button>
+      <button *ngIf="selection?.name" (click)="onUpdateItem(selection, newItem.value); newItem.value=''" type="button" class="btn "[ngClass]="[className]" >Update {{label}}</button>
     </div>
   </div>
 </form>

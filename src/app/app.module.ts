@@ -17,7 +17,10 @@ import { UserComponent } from './users/user/user.component';
 import { DetailsComponent } from './users/details/details.component';
 import { ListComponent } from './users/list/list.component';
 
-import{HttpClientModule} from '@angular/common/http';
+import{HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { SpinnerInterceptor } from './shared/spinner.interceptor';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import{HttpClientModule} from '@angular/common/http';
     PagenotfoundComponent,
     UserComponent,
     DetailsComponent,
-    ListComponent
+    ListComponent,
+    SpinnerComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,9 @@ import{HttpClientModule} from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:SpinnerInterceptor,multi:true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

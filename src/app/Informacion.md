@@ -337,14 +337,108 @@ el router espera a que se resuelvan los datos antes de que finalmente se active 
 
 Es el mecanismo que se encarga para que hasta que tengamos data se inicialice.
 
-
-
 ## Carga diferida.
 
-retrazar la carga de un determinado modulo, hasta que sea necesario
+retrazar la carga de un determinado modulo, hasta que sea necesario, carga perezosa 
 
 ng g m contact-reactive --routing true
 
 forRoot => se carga de manera inmedita todo el bondel
 
 forchild => se carga cuando se pide (carga diferida), se carga bajo demanda, modulo hijo.
+
+## INTERCEPTOR
+
+Intercepta una peticion http y la modifica.
+
+se lannza la peticion de angular  => interceptor => servidor
+
+se lannza la peticion de angular  <= interceptor <= servidor
+
+### Programacion Reactiva
+
+la programacion reactiva es programacion orientada al manejo de streams de datos asincronos y la propagacion de los cambios
+
+RxJS
+
+es una libreria para componer programas asincronos y basados en eventos usados secuencia de observables.
+
+programacion reactiva, observables, operators, subjects,subcriptions
+
+observables solamente es un string de datos => Eventos de la ui, hhtp request, web sockets, estado de una app
+
+observable=> observadores=> suscripciones
+
+subject tiene el mismo comportamiento que un observable que puede compartir data con varios observadores u observers
+
+* subject
+* behavior subject
+
+* replay subject
+* async subject
+
+| Objservables                          | promesas                                |
+| ------------------------------------- | --------------------------------------- |
+| se ejecuta inmediatamente             | no comienza hasta su suscripcion        |
+| emite solo un valor                   | multiples valores a lo largo del tiempo |
+| envia los errores a las promesas hija | observable proporciona operadores       |
+| usa la clausula .then()               |                                         |
+
+## content projection
+
+es un patron que no ayuda a insertar o vizualizar contenido, practicamente para la vizualizacion de contenido
+
+single-slot
+
+multi-slot
+
+```html
+<div class="card">
+  <div class="card-header">
+    <ng-content select="[card-header]" ></ng-content>
+  </div>
+  <div class="card-body">
+    <ng-content select="[card-body]"></ng-content>
+
+  </div>
+</div>
+
+```
+
+
+## ng container y ng templete
+
+### **ng container**
+
+**ng container** puede tener directivas estructurales y no añade un nuevo elemento al dom
+
+```html
+        <ng-container *ngIf="selection">
+          <p *ngIf="selection?.name">Your city is:{{selection?.name}}</p>
+          <app-button (click)="onClear()" [color]="'blue'" [label]="'clear your city'" ></app-button>
+        </ng-container>
+```
+
+### ****ng templete**
+**
+
+**ng templete** nosotros le decimos cuando se renderice la plantilla:
+
+```html
+           <ng-container *ngIf="cities.length > 1; else templateEmpty">
+             <app-cities *ngFor="let city of (cities| filter:criteria)"
+                 (cityDeleteEvent)="onCityDelete($event)"
+                 (citySelectedEvent)="onCitySelected($event)"
+                 [city]="city" [selection]="selection"></app-cities>
+           </ng-container>
+
+```
+
+**ng templete** nosotros le decimos cuando se renderice la plantilla:
+
+```html
+<!--Creacion de ng templeate que sera llamado en la parte de arriba si el ng se confirma-->
+<ng-template #templateEmpty> We no cities XD</ng-template>
+
+
+```
